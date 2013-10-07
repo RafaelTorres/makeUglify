@@ -1,0 +1,26 @@
+
+{
+    "name": "testUglify",
+    "version": "0.1.11",
+    "author": "Rafael Torres",
+    "main": ".bin/",
+    "bin":{
+      "testUglify":"./bin/testUglify"
+      },
+   
+    "scripts": {
+        "start": ".bin/testUglify",
+        "test" : ".bin/testUglify -c"
+    },
+    "dependencies": {
+      "commander"   : ">=1.0.0",
+      "colorize"    : ">=0.1.0",
+      "wrench"      : ">=1.3.9",
+      "path"        : ">=0.4.9",
+      "uglify-js"   : ">=2.3.6"
+    },
+  "readme": "testUglify\n========\n\ntestUglify is command line interface that helps to list  files from of  diferent folder \nand  apply   the  method  uglify .\ngenerate  an replace of  file  for  an  new  with  date  change",
+  "readmeFilename": "README.md"
+  
+
+}
