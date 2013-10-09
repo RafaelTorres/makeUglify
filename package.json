@@ -1,26 +1,30 @@
-
 {
-    "name": "testUglify",
-    "version": "0.1.11",
-    "author": "Rafael Torres",
-    "main": ".bin/",
-    "bin":{
-      "testUglify":"./bin/testUglify"
-      },
-   
-    "scripts": {
-        "start": ".bin/testUglify",
-        "test" : ".bin/testUglify -c"
-    },
-    "dependencies": {
-      "commander"   : ">=1.0.0",
-      "colorize"    : ">=0.1.0",
-      "wrench"      : ">=1.3.9",
-      "path"        : ">=0.4.9",
-      "uglify-js"   : ">=2.3.6"
-    },
-  "readme": "testUglify\n========\n\ntestUglify is command line interface that helps to list  files from of  diferent folder \nand  apply   the  method  uglify .\ngenerate  an replace of  file  for  an  new  with  date  change",
-  "readmeFilename": "README.md"
-  
-
+  "name": "testuglify",
+  "version": "0.1.14",
+  "author": "Rafael Torres",
+  "main": ".bin/",
+  "bin": {
+    "testuglify": "./bin/testuglify"
+  },
+  "scripts": {
+    "start": ".bin/testuglify",
+    "test": ".bin/testuglify -c"
+  },
+  "dependencies": {
+    "commander": ">=1.0.0",
+    "colorize": ">=0.1.0",
+    "wrench": ">=1.3.9",
+    "path": ">=0.4.9",
+    "uglify-js": ">=2.3.6"
+  },
+  "description": "testuglify ========",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RafaelTorres/makeUglify.git"
+  },
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/RafaelTorres/makeUglify/issues"
+  },
+  "devDependencies": {}
 }
