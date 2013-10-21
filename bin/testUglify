@@ -30,8 +30,8 @@ function listFiles(folder){
         var pathFolder = path.resolve(path.join(__dirname, folder, item));
         if(fs.statSync(pathFolder).isFile()){
             if(path.extname(pathFolder) === ".js"){
-               cconsole.log('- #green["' + pathFolder+ '"]'); 
-               //FilesInFolder.push(pathFolder);
+               //cconsole.log('- #green["' + pathFolder+ '"]'); 
+               FilesInFolder.push(pathFolder);
                amoundFiles = amoundFiles + 1;
             }; 
         };   
