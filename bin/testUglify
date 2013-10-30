@@ -11,7 +11,7 @@ var FilesInFolder = [];
 var folderpath = "";
 
 program
-.version('0.0.3')
+.version('0.0.4')
 .option('-p, --path <pa>','Enter Folder name')
 .parse(process.argv);
 
@@ -27,11 +27,12 @@ function listFiles(folder){
 
     var fl = wrench.readdirSyncRecursive(folder);
     fl.forEach(function(item){
-        var pathFolder = path.resolve(path.join(__dirname, folder, item));
-        if(fs.statSync(pathFolder).isFile()){
-            if(path.extname(pathFolder) === ".js"){
+        var pathFolder = path.resolve(path.join(__dirname, folder));
+        var pathfinal = pathfolder+"/"+item;
+        if(fs.statSync(pathfinal).isFile()){
+            if(path.extname(pathfinal) === ".js"){
                //cconsole.log('- #green["' + pathFolder+ '"]'); 
-               FilesInFolder.push(pathFolder);
+               FilesInFolder.push(pathfinal);
                amoundFiles = amoundFiles + 1;
             }; 
         };   
