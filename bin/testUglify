@@ -11,7 +11,7 @@ var FilesInFolder = [];
 var folderpath = "";
 
 program
-.version('0.0.4')
+.version('0.0.6')
 .option('-p, --path <pa>','Enter Folder name')
 .parse(process.argv);
 
@@ -28,7 +28,7 @@ function listFiles(folder){
     var fl = wrench.readdirSyncRecursive(folder);
     fl.forEach(function(item){
         var pathFolder = path.resolve(path.join(__dirname, folder));
-        var pathfinal = pathfolder+"/"+item;
+        var pathfinal = pathFolder+"/"+item;
         if(fs.statSync(pathfinal).isFile()){
             if(path.extname(item) === ".js"){
                cconsole.log('- #green["' + pathfinal+ '"]'); 
