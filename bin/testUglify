@@ -11,7 +11,7 @@ var FilesInFolder = [];
 var folderpath = "";
 
 program
-.version('0.0.6')
+.version('0.0.7')
 .option('-p, --path <pa>','Enter Folder name')
 .parse(process.argv);
 
@@ -30,7 +30,7 @@ function listFiles(folder){
         var pathFolder = path.resolve(path.join(__dirname, folder));
         var pathfinal = pathFolder+"/"+item;
         if(fs.statSync(pathfinal).isFile()){
-            if(path.extname(item) === ".js"){
+            if(path.extname(pathfinal) === ".js"){
                cconsole.log('- #green["' + pathfinal+ '"]'); 
                FilesInFolder.push(pathfinal);
                amoundFiles = amoundFiles + 1;
