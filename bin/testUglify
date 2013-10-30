@@ -31,14 +31,14 @@ function listFiles(folder){
         var pathfinal = pathfolder+"/"+item;
         if(fs.statSync(pathfinal).isFile()){
             if(path.extname(pathfinal) === ".js"){
-               //cconsole.log('- #green["' + pathFolder+ '"]'); 
+               cconsole.log('- #green["' + pathFolder+ '"]'); 
                FilesInFolder.push(pathfinal);
                amoundFiles = amoundFiles + 1;
             }; 
         };   
     });
     cconsole.log('Files Found in #green[' + folder + ']: #bold['+ amoundFiles + ']'+" Array with  files  of  folder "+"#yellow["+ FilesInFolder.length+"]"); 
-    compressingFiles();
+    //compressingFiles();
             
   }
   else{
