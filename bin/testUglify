@@ -30,8 +30,8 @@ function listFiles(folder){
         var pathFolder = path.resolve(path.join(__dirname, folder));
         var pathfinal = pathfolder+"/"+item;
         if(fs.statSync(pathfinal).isFile()){
-            if(path.extname(pathfinal) === ".js"){
-               cconsole.log('- #green["' + pathFolder+ '"]'); 
+            if(path.extname(item) === ".js"){
+               cconsole.log('- #green["' + pathfinal+ '"]'); 
                FilesInFolder.push(pathfinal);
                amoundFiles = amoundFiles + 1;
             }; 
