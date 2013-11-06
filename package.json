@@ -1,14 +1,14 @@
 {
-  "name": "testUglify",
-  "version": "0.1.15",
+  "name": "testuglify",
+  "version": "0.1.16",
   "author": "Rafael Torres",
   "main": ".bin/",
   "bin": {
-    "testUglify": "./bin/testUglify"
+    "testUglify": "./bin/testuglify"
   },
   "scripts": {
-    "start": ".bin/testUglify",
-    "test": ".bin/testUglify -c"
+    "start": ".bin/testuglify",
+    "test": ".bin/testuglify -c"
   },
   "dependencies": {
     "commander": ">=1.0.0",
@@ -22,9 +22,9 @@
     "type": "git",
     "url": "https://github.com/RafaelTorres/makeUglify.git"
   },
-  "license": "BSD",
+  "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/RafaelTorres/makeUglify/issues"
   },
-  "gitHead": "752c2da28e6ee39339198e109e097936a8ca5dc4"
+  "devDependencies": {}
 }
