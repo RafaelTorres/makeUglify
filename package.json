@@ -1,6 +1,6 @@
 {
   "name": "testUglify",
-  "version": "0.1.13",
+  "version": "0.1.15",
   "author": "Rafael Torres",
   "main": ".bin/",
   "bin": {
@@ -17,7 +17,7 @@
     "path": ">=0.4.9",
     "uglify-js": ">=2.3.6"
   },
-  "description": "testUglify ========",
+  "description": "testUglify compress files type JS",
   "repository": {
     "type": "git",
     "url": "https://github.com/RafaelTorres/makeUglify.git"
