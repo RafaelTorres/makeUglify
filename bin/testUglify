@@ -28,11 +28,13 @@ function listFiles(folder){
     var fl = wrench.readdirSyncRecursive(folder);
     fl.forEach(function(item){
         var pathFolder = path.resolve(path.join(__dirname, folder));
+
         var  finalpath = pathfolder+"/"+item;
         if(fs.statSync(finalpath).isFile()){
             if(path.extname(finalpath) === ".js"){
                cconsole.log('- #green["' + finalpath+ '"]'); 
                FilesInFolder.push(pathFolder);
+
                amoundFiles = amoundFiles + 1;
             }; 
         };   
