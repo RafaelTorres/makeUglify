@@ -69,7 +69,7 @@ function folderExists(path){
 function compressingFiles(){
    // var files = FilesInFolder.shift();
     for(var i=0; i<FilesInFolder.length; i++){
-            cconsole.log('#green['+fl[i]+']');
+            cconsole.log('#green['+FilesInFolder[i]+']');
     }
     /*minimizer(files,function(){
         if(FilesInFolder.length > 0){
