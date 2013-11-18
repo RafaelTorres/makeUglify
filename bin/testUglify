@@ -11,7 +11,7 @@ var FilesInFolder = [];
 var folderpath = "";
 
 program
-.version('0.0.16')
+.version('0.0.17')
 .option('-p, --path <pa>','Enter Folder name')
 .parse(process.argv);
 
@@ -67,18 +67,19 @@ function folderExists(path){
 };
 
 function compressingFiles(){
-   // var files = FilesInFolder.shift();
-    for(var i=0; i<FilesInFolder.length; i++){
+   var files = FilesInFolder.shift();
+    /*for(var i=0; i<FilesInFolder.length; i++){
             cconsole.log('#green['+FilesInFolder[i]+']');
-    }
-    /*minimizer(files,function(){
+    }*/
+    cconsole.log('#green['+files+']');
+    minimizer(files,function(){
         if(FilesInFolder.length > 0){
            compressingFiles();
         }
         else{
           cconsole.log("#green[Process  sucefully]");
         };
-    });*/
+    });
 };
 
 
@@ -87,8 +88,8 @@ function minimizer(file,cb){
     try{
         var result   = UglifyJS.minify(file);
         //cconsole.log("#green["+file+"]");
-        //cconsole.log(result.code); 
-        rewrite(file,result.code);
+        cconsole.log('#blue['+result.code+']'); 
+        //rewrite(file,result.code);
         cb();
     }
     catch(err){     
