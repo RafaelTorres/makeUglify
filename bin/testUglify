@@ -27,7 +27,10 @@ function listFiles(folder){
   if(r){
 
     var fl = wrench.readdirSyncRecursive(folder);
-    fl.forEach(function(item){
+    for(var i=0; i<fl.length; i++){
+      console.log(fl[i]);
+    }
+   /* fl.forEach(function(item){
         var pathFolder = path.resolve(path.join(__dirname, folder));
         var  finalpath = pathFolder+"/"+item;
         if(fs.statSync(item).isFile()){
@@ -38,8 +41,8 @@ function listFiles(folder){
                amoundFiles = amoundFiles + 1;
             }; 
         };   
-    });
-    cconsole.log('Files Found in #green[' + folder + ']: #bold['+ amoundFiles + ']'+" Array with  files  of  folder "+"#yellow["+ FilesInFolder.length+"]"); 
+    });*/
+   // cconsole.log('Files Found in #green[' + folder + ']: #bold['+ amoundFiles + ']'+" Array with  files  of  folder "+"#yellow["+ FilesInFolder.length+"]"); 
     //compressingFiles();
             
   }
