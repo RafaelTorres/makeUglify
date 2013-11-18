@@ -19,6 +19,7 @@ if(program.path){
   listFiles(program.path);
 };
 
+//
 function listFiles(folder){
   folderpath = folder;
   var r = folderExists(folder);
