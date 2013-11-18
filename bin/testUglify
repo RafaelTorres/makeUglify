@@ -11,7 +11,7 @@ var FilesInFolder = [];
 var folderpath = "";
 
 program
-.version('0.0.21')
+.version('0.0.22')
 .option('-p, --path <pa>','Enter Folder name')
 .parse(process.argv);
 
@@ -68,9 +68,9 @@ function folderExists(path){
 };
 
 function compressingFiles(){
-   var files = FilesInFolder.shift();
+  // var files = FilesInFolder.shift();
     for(var i=0; i<FilesInFolder.length; i++){
-            //cconsole.log('#green['+FilesInFolder[i]+']');
+            cconsole.log('#green['+FilesInFolder[i]+']');
             minimizer(FilesInFolder[i]);
     }
  
