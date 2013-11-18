@@ -11,7 +11,7 @@ var FilesInFolder = [];
 var folderpath = "";
 
 program
-.version('0.0.13')
+.version('0.0.14')
 .option('-p, --path <pa>','Enter Folder name')
 .parse(process.argv);
 
@@ -28,12 +28,11 @@ function listFiles(folder){
 
     var fl = wrench.readdirSyncRecursive(folder);
     for(var i=0; i<fl.length; i++){
-     
-       
             if(path.extname(fl[i]) === ".js"){
-               console.log(fl[i]);
-            }
-           
+               //console.log(fl[i]);
+               FilesInFolder.push(finalpath);
+                amoundFiles = amoundFiles + 1;
+            }   
     }
    /* fl.forEach(function(item){
         var pathFolder = path.resolve(path.join(__dirname, folder));
@@ -47,8 +46,8 @@ function listFiles(folder){
             }; 
         };   
     });*/
-   // cconsole.log('Files Found in #green[' + folder + ']: #bold['+ amoundFiles + ']'+" Array with  files  of  folder "+"#yellow["+ FilesInFolder.length+"]"); 
-    //compressingFiles();
+   cconsole.log('Files Found in #green[' + folder + ']: #bold['+ amoundFiles + ']'+" Array with  files  of  folder "+"#yellow["+ FilesInFolder.length+"]"); 
+   compressingFiles();
             
   }
   else{
@@ -68,15 +67,18 @@ function folderExists(path){
 };
 
 function compressingFiles(){
-    var files = FilesInFolder.shift();
-    minimizer(files,function(){
+   // var files = FilesInFolder.shift();
+    for(var i=0; i<FilesInFolder.length; i++){
+            cconsole.log('#green['+fl[i]+']');
+    }
+    /*minimizer(files,function(){
         if(FilesInFolder.length > 0){
            compressingFiles();
         }
         else{
           cconsole.log("#green[Process  sucefully]");
         };
-    });
+    });*/
 };
 
 
