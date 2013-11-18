@@ -11,7 +11,7 @@ var FilesInFolder = [];
 var folderpath = "";
 
 program
-.version('0.0.19')
+.version('0.0.20')
 .option('-p, --path <pa>','Enter Folder name')
 .parse(process.argv);
 
@@ -30,7 +30,8 @@ function listFiles(folder){
     for(var i=0; i<fl.length; i++){
             if(path.extname(fl[i]) === ".js"){
                //console.log(fl[i]);
-               FilesInFolder.push(fl[i]);
+                var pathFolder = path.resolve(path.join(__dirname, folder,fl[i]));
+               FilesInFolder.push(pathFolder);
                 amoundFiles = amoundFiles + 1;
             }   
     }
@@ -68,33 +69,26 @@ function folderExists(path){
 
 function compressingFiles(){
    var files = FilesInFolder.shift();
-    /*for(var i=0; i<FilesInFolder.length; i++){
-            cconsole.log('#green['+FilesInFolder[i]+']');
-    }*/
-   // cconsole.log('#green['+files+']');
-    minimizer(files,function(){
-        if(FilesInFolder.length > 0){
-           compressingFiles();
-        }
-        else{
-          cconsole.log("#green[Process  sucefully]");
-        };
-    });
+    for(var i=0; i<FilesInFolder.length; i++){
+            //cconsole.log('#green['+FilesInFolder[i]+']');
+            minimizer2(FilesInFolder[i]);
+    }
+ 
 };
 
 
-function minimizer(file,cb){  
-      cconsole.log("#green["+file+"]");
+function minimizer(file){  
+      
     try{
         var result   = UglifyJS.minify(file);
-      
+        cconsole.log("#green["+file+"]");
         cconsole.log('#blue['+result.code+']'); 
-        //rewrite(file,result.code);
-        cb();
+        rewrite(file,result.code);
+ 
     }
     catch(err){     
          //cconsole.log("#red["+file+"]");
-          cb();
+
     }; 
 };
 
