@@ -11,7 +11,7 @@ var FilesInFolder = [];
 var folderpath = "";
 
 program
-.version('0.0.20')
+.version('0.0.21')
 .option('-p, --path <pa>','Enter Folder name')
 .parse(process.argv);
 
@@ -71,7 +71,7 @@ function compressingFiles(){
    var files = FilesInFolder.shift();
     for(var i=0; i<FilesInFolder.length; i++){
             //cconsole.log('#green['+FilesInFolder[i]+']');
-            minimizer2(FilesInFolder[i]);
+            minimizer(FilesInFolder[i]);
     }
  
 };
