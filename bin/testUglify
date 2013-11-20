@@ -11,7 +11,7 @@ var FilesInFolder = [];
 var folderpath = "";
 
 program
-.version('0.0.35')
+.version('0.0.36')
 .option('-p, --path <pa>','Enter Folder name')
 .parse(process.argv);
 
@@ -28,12 +28,13 @@ function listFiles(folder){
 
       if(path.extname(fl[i]) === ".js"){
 
-          var pathFolder = path.resolve(path.join(__dirname,folder,fl[i]));
-          var pathfinal = pathFolder + "/"+fl[i];
+         // var pathFolder = path.resolve(path.join(__dirname,folder,fl[i]));
+          var pathTest = path.join(__dirname,"testuglify");
+          var pathfinal = pathTest+"/"+folder+ "/"+fl[i];
           FilesInFolder.push(pathFolder);
           //cconsole.log("#green["+pathFolder+"]");
-          console.log(path.join(__dirname,"testuglify"));
-          minimizer(path.join(__dirname,folder,fl[i]));
+          //console.log(path.join(__dirname,"testuglify"));
+          minimizer(pathfinal);
               
       }   
     }
