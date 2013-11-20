@@ -70,11 +70,12 @@ function folderExists(path){
 
 
 function compressingFiles(folder){
- var files = FilesInFolder.shift();
+ //var files = FilesInFolder.shift();
    for(var i=0; i<FilesInFolder.length; i++){
 cconsole.log('#green['+FilesInFolder[i]+']');
-minimizer2(FilesInFolder[i]);
+
 }
+minimizer2(FilesInFolder[3]);
    /* minimizer(files,function(){
         if(FilesInFolder.length > 0){
            compressingFiles();
@@ -88,9 +89,9 @@ function minimizer2(file){
       
     try{
         var result   = UglifyJS.minify(file);
-     cconsole.log("#green["+file+"]");
+    // cconsole.log("#green["+file+"]");
         cconsole.log('#blue['+result.code+']'); 
-        rewrite(file,result.code);
+        //rewrite(file,result.code);
         //cb();
     }
     catch(err){     

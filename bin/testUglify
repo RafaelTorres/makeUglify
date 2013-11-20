@@ -11,7 +11,7 @@ var FilesInFolder = [];
 var folderpath = "";
 
 program
-.version('0.0.23')
+.version('0.0.24')
 .option('-p, --path <pa>','Enter Folder name')
 .parse(process.argv);
 
@@ -72,9 +72,19 @@ function compressingFiles(){
     for(var i=0; i<FilesInFolder.length; i++){
             cconsole.log('#green['+FilesInFolder[i]+']');
            // minimizer(FilesInFolder[i]);
-          var result   = UglifyJS.minify(FilesInFolder[i]);
-           cconsole.log('#blue['+result.code+']');
     }
+
+       try{
+        var result   = UglifyJS.minify(FilesInFolder[i3);
+        cconsole.log("#green["+FilesInFolder[3]+"]");
+        cconsole.log('#blue['+result.code+']'); 
+       // rewrite(file,result.code);
+ 
+    }
+    catch(err){     
+         //cconsole.log("#red["+file+"]");
+
+    };
  
 };
 
