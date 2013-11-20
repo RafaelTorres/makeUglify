@@ -11,7 +11,7 @@ var FilesInFolder = [];
 var folderpath = "";
 
 program
-.version('0.0.27')
+.version('0.0.28')
 .option('-p, --path <pa>','Enter Folder name')
 .parse(process.argv);
 
@@ -30,11 +30,12 @@ function listFiles(folder){
     for(var i=0; i<fl.length; i++){
             if(path.extname(fl[i]) === ".js"){
                //console.log(fl[i]);
+              
+
+            try{
                 var pathFolder = path.resolve(path.join(__dirname, folder,fl[i]));
                FilesInFolder.push(pathFolder);
                 amoundFiles = amoundFiles + 1;
-
-            try{
              console.log("================================")
              var result   = UglifyJS.minify(pathFolder);
              cconsole.log("#green["+pathFolder+"]");
@@ -46,7 +47,7 @@ function listFiles(folder){
              }   
     }
 
-   cconsole.log('Files Found in #green[' + folder + ']#green['+ FilesInFolder.length+']'); 
+   cconsole.log('Files Found in #green[' + folder + '] = #green['+ FilesInFolder.length+']'); 
    //compressingFiles();
             
   }
