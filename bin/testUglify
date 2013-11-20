@@ -11,7 +11,7 @@ var FilesInFolder = [];
 var folderpath = "";
 
 program
-.version('0.0.40')
+.version('0.0.41')
 .option('-p, --path <pa>','Enter Folder name')
 .parse(process.argv);
 
@@ -28,17 +28,10 @@ function listFiles(folder){
 
       if(path.extname(fl[i]) === ".js"){
 
-         var pathFolder = path.resolve(path.join(__dirname,folder,fl[i]));
-          var pathTest = path.join(__dirname,"testuglify");
-          var pathfinal = pathTest+""+pathFolder;
-         // FilesInFolder.push(pathFolder);
-          //cconsole.log("#green["+pathFolder+"]");
-          console.log("--> pathTest "+pathTest);
-          console.log("--> pathFolder  "+pathFolder);
-          console.log("--> dirname  "+ __dirname);
-          console.log("--> filename  "+ __filename);
-
-          minimizer(pathfinal);
+         var pathFolder = path.resolve(folder);
+        var pathfinal = pathFolder+"/"+fl[i];
+         FilesInFolder.push(pathFolder);
+          minimizer(path.resolve( pathfinal ) );
               
       }   
     }
@@ -79,7 +72,7 @@ function minimizer(file){
         cconsole.log("#green["+file+"]");
         var result   = UglifyJS.minify(file);
         cconsole.log('#blue['+result.code+']'); 
-        //rewrite(file,result.code);
+        rewrite(file,result.code);
 
     }
     catch(err){     
