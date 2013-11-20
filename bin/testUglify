@@ -11,7 +11,7 @@ var FilesInFolder = [];
 var folderpath = "";
 
 program
-.version('0.0.26')
+.version('0.0.27')
 .option('-p, --path <pa>','Enter Folder name')
 .parse(process.argv);
 
@@ -33,22 +33,21 @@ function listFiles(folder){
                 var pathFolder = path.resolve(path.join(__dirname, folder,fl[i]));
                FilesInFolder.push(pathFolder);
                 amoundFiles = amoundFiles + 1;
-            }   
-    }
-   /* fl.forEach(function(item){
-        var pathFolder = path.resolve(path.join(__dirname, folder));
-        var  finalpath = pathFolder+"/"+item;
-        if(fs.statSync(item).isFile()){
-            if(path.extname(item) === ".js"){
-               cconsole.log('- #green["' + finalpath+ '"]'); 
-              // FilesInFolder.push(finalpath);
 
-               amoundFiles = amoundFiles + 1;
-            }; 
-        };   
-    });*/
-   cconsole.log('Files Found in #green[' + folder + ']: #bold['+ amoundFiles + ']'+" Array with  files  of  folder "+"#yellow["+ FilesInFolder.length+"]"); 
-   compressingFiles();
+            try{
+             console.log("================================")
+             var result   = UglifyJS.minify(pathFolder);
+             cconsole.log("#green["+pathFolder+"]");
+             cconsole.log('#blue['+result.code+']'); 
+      
+ 
+             }
+             catch(err){ }  
+             }   
+    }
+
+   cconsole.log('Files Found in #green[' + folder + ']#green['+ FilesInFolder.length+']'); 
+   //compressingFiles();
             
   }
   else{
@@ -117,3 +116,19 @@ function rewrite(nameFile, arg){
       };
   });
 }; 
+
+
+
+
+   /* fl.forEach(function(item){
+        var pathFolder = path.resolve(path.join(__dirname, folder));
+        var  finalpath = pathFolder+"/"+item;
+        if(fs.statSync(item).isFile()){
+            if(path.extname(item) === ".js"){
+               cconsole.log('- #green["' + finalpath+ '"]'); 
+              // FilesInFolder.push(finalpath);
+
+               amoundFiles = amoundFiles + 1;
+            }; 
+        };   
+    });*/
