@@ -11,7 +11,7 @@ var FilesInFolder = [];
 var folderpath = "";
 
 program
-.version('0.0.28')
+.version('0.0.30')
 .option('-p, --path <pa>','Enter Folder name')
 .parse(process.argv);
 
@@ -19,39 +19,24 @@ if(program.path){
   listFiles(program.path);
 };
 
-//
 function listFiles(folder){
   folderpath = folder;
   var r = folderExists(folder);
-  var amoundFiles = 0;
   if(r){
-
     var fl = wrench.readdirSyncRecursive(folder);
     for(var i=0; i<fl.length; i++){
-            if(path.extname(fl[i]) === ".js"){
-               //console.log(fl[i]);
-              
 
-            try{
-                var pathFolder = path.resolve(path.join(__dirname, folder,fl[i]));
-               //FilesInFolder.push(pathFolder);
-                cconsole.log("#green["+pathFolder+"]");
-               
-             console.log("================================");
-              console.log(UglifyJS.minify(pathFolder));
-             var result   = UglifyJS.minify(pathFolder);
-            
-             cconsole.log('#blue['+result.code+']'); 
-              amoundFiles = amoundFiles + 1;
-      
- 
-             }
-             catch(err){ }  
-             }   
+      if(path.extname(fl[i]) === ".js"){
+
+          var pathFolder = path.resolve(path.join(__dirname, folder,fl[i]));
+          FilesInFolder.push(pathFolder);
+          //cconsole.log("#green["+pathFolder+"]");
+              
+      }   
     }
 
    cconsole.log('Files Found in #green[' + folder + '] = #green['+ FilesInFolder.length+']'); 
-   //compressingFiles();
+   compressingFiles();
             
   }
   else{
@@ -71,23 +56,17 @@ function folderExists(path){
 };
 
 function compressingFiles(){
-  // var files = FilesInFolder.shift();
   
+  try{
 
-       try{
-        console.log("================================")
-          for(var i=0; i<FilesInFolder.length; i++){
-            cconsole.log('#green['+FilesInFolder[i]+']');
-           // minimizer(FilesInFolder[i]);
-            }
-        var result   = UglifyJS.minify(FilesInFolder[3]);
-        cconsole.log("#green["+FilesInFolder[3]+"]");
-        cconsole.log('#blue['+result.code+']'); 
-       // rewrite(file,result.code);
- 
+  
+    for(var i=0; i<FilesInFolder.length; i++){
+        //cconsole.log('#green['+FilesInFolder[i]+']');
+        minimizer(FilesInFolder[i]);
     }
-    catch(err){     
-         //cconsole.log("#red["+file+"]");
+ 
+  }catch(err){     
+     //cconsole.log("#red["+file+"]");
 
     };
  
@@ -97,6 +76,7 @@ function compressingFiles(){
 function minimizer(file){  
       
     try{
+        console.log("================================")
         var result   = UglifyJS.minify(file);
         cconsole.log("#green["+file+"]");
         cconsole.log('#blue['+result.code+']'); 
@@ -120,6 +100,23 @@ function rewrite(nameFile, arg){
       };
   });
 }; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
