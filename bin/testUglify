@@ -11,7 +11,7 @@ var FilesInFolder = [];
 var folderpath = "";
 
 program
-.version('0.0.31')
+.version('0.0.32')
 .option('-p, --path <pa>','Enter Folder name')
 .parse(process.argv);
 
@@ -31,12 +31,13 @@ function listFiles(folder){
           var pathFolder = path.resolve(path.join(__dirname, folder,fl[i]));
           FilesInFolder.push(pathFolder);
           //cconsole.log("#green["+pathFolder+"]");
+          minimizer(pathFolder);
               
       }   
     }
 
    cconsole.log('Files Found in #green[' + folder + '] = #green['+ FilesInFolder.length+']'); 
-   compressingFiles();
+   //compressingFiles();
             
   }
   else{
@@ -56,35 +57,26 @@ function folderExists(path){
 };
 
 function compressingFiles(){
-  
-  try{
-
-  
     for(var i=0; i<FilesInFolder.length; i++){
         //cconsole.log('#green['+FilesInFolder[i]+']');
         minimizer(FilesInFolder[i]);
     }
- 
-  }catch(err){     
-     //cconsole.log("#red["+file+"]");
-
-    };
- 
 };
 
 
 function minimizer(file){  
       
     try{
+      
         console.log("================================");
         cconsole.log("#green["+file+"]");
         var result   = UglifyJS.minify(file);
         cconsole.log('#blue['+result.code+']'); 
-        rewrite(file,result.code);
- 
+        //rewrite(file,result.code);
+
     }
     catch(err){     
-         //cconsole.log("#red["+file+"]");
+         cconsole.log("#red["+file+"]");
 
     }; 
 };
