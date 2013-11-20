@@ -11,7 +11,7 @@ var FilesInFolder = [];
 var folderpath = "";
 
 program
-.version('0.0.32')
+.version('0.0.33')
 .option('-p, --path <pa>','Enter Folder name')
 .parse(process.argv);
 
@@ -28,10 +28,11 @@ function listFiles(folder){
 
       if(path.extname(fl[i]) === ".js"){
 
-          var pathFolder = path.resolve(path.join(__dirname, folder,fl[i]));
+          var pathFolder = path.resolve(path.join(__dirname,folder));
+          var pathfinal = pathFolder + "/"+fl[i];
           FilesInFolder.push(pathFolder);
           //cconsole.log("#green["+pathFolder+"]");
-          minimizer(pathFolder);
+          minimizer(pathfinal);
               
       }   
     }
@@ -67,7 +68,7 @@ function compressingFiles(){
 function minimizer(file){  
       
     try{
-      
+
         console.log("================================");
         cconsole.log("#green["+file+"]");
         var result   = UglifyJS.minify(file);
