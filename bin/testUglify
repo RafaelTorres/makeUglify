@@ -11,7 +11,7 @@ var FilesInFolder = [];
 var folderpath = "";
 
 program
-.version('0.0.30')
+.version('0.0.31')
 .option('-p, --path <pa>','Enter Folder name')
 .parse(process.argv);
 
@@ -76,9 +76,9 @@ function compressingFiles(){
 function minimizer(file){  
       
     try{
-        console.log("================================")
-        var result   = UglifyJS.minify(file);
+        console.log("================================");
         cconsole.log("#green["+file+"]");
+        var result   = UglifyJS.minify(file);
         cconsole.log('#blue['+result.code+']'); 
         rewrite(file,result.code);
  
