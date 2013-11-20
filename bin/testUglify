@@ -11,7 +11,7 @@ var FilesInFolder = [];
 var folderpath = "";
 
 program
-.version('0.0.36')
+.version('0.0.37')
 .option('-p, --path <pa>','Enter Folder name')
 .parse(process.argv);
 
@@ -31,7 +31,7 @@ function listFiles(folder){
          // var pathFolder = path.resolve(path.join(__dirname,folder,fl[i]));
           var pathTest = path.join(__dirname,"testuglify");
           var pathfinal = pathTest+"/"+folder+ "/"+fl[i];
-          FilesInFolder.push(pathFolder);
+         // FilesInFolder.push(pathFolder);
           //cconsole.log("#green["+pathFolder+"]");
           //console.log(path.join(__dirname,"testuglify"));
           minimizer(pathfinal);
