@@ -32,7 +32,7 @@ function listFiles(folder){
           var pathfinal = pathFolder + "/"+fl[i];
           FilesInFolder.push(pathFolder);
           //cconsole.log("#green["+pathFolder+"]");
-          minimizer(ppath.join(__dirname,folder,fl[i]));
+          minimizer(path.join(__dirname,folder,fl[i]));
               
       }   
     }
