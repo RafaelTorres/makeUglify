@@ -34,12 +34,15 @@ function listFiles(folder){
 
             try{
                 var pathFolder = path.resolve(path.join(__dirname, folder,fl[i]));
-               FilesInFolder.push(pathFolder);
-                amoundFiles = amoundFiles + 1;
-             console.log("================================")
+               //FilesInFolder.push(pathFolder);
+                cconsole.log("#green["+pathFolder+"]");
+               
+             console.log("================================");
+              console.log(UglifyJS.minify(pathFolder));
              var result   = UglifyJS.minify(pathFolder);
-             cconsole.log("#green["+pathFolder+"]");
+            
              cconsole.log('#blue['+result.code+']'); 
+              amoundFiles = amoundFiles + 1;
       
  
              }
