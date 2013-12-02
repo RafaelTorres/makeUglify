@@ -11,7 +11,7 @@ var FilesInFolder = [];
 var folderpath = "";
 
 program
-.version('0.0.42')
+.version('0.0.43')
 .option('-p, --path <pa>','Enter Folder name')
 .parse(process.argv);
 
@@ -23,22 +23,18 @@ function listFiles(folder){
   folderpath = folder;
   var r = folderExists(folder);
   if(r){
-    var fl = wrench.readdirSyncRecursive(folder);
+     var fl = wrench.readdirSyncRecursive(folder);
     for(var i=0; i<fl.length; i++){
+       if(path.extname(fl[i]) === ".js"){
 
-      if(path.extname(fl[i]) === ".js"){
-
-         var pathFolder = path.resolve(folder);
-        var pathfinal = pathFolder+"/"+fl[i];
-         FilesInFolder.push(pathFolder);
-          minimizer(path.resolve( pathfinal ) );
-              
-      }   
+          var pathFolder = path.resolve(folder);
+          var pathfinal = pathFolder+"/"+fl[i];
+          FilesInFolder.push(pathfinal );
+        }   
     }
 
-   cconsole.log('Files Found in #green[' + folder + '] = #green['+ FilesInFolder.length+']'); 
-   //compressingFiles();
-            
+    cconsole.log('Files Found in #green[' + folder + '] = #green['+ FilesInFolder.length+']'); 
+    compressingFiles();          
   }
   else{
     cconsole.log('#red[Folder #bold["' + folder + '"] does not exist]'); 
@@ -57,71 +53,44 @@ function folderExists(path){
 };
 
 function compressingFiles(){
-    for(var i=0; i<FilesInFolder.length; i++){
-        //cconsole.log('#green['+FilesInFolder[i]+']');
-        minimizer(FilesInFolder[i]);
-    }
+    var files = FilesInFolder.shift();
+    minimizer(files,function(){
+        if(FilesInFolder.length > 0){
+           compressingFiles();
+        }
+        else{
+          cconsole.log("#green[Process  sucefully]");
+        };
+    });
 };
 
 
-function minimizer(file){  
-      
+function minimizer(file,cb){      
     try{
 
-       
-       // cconsole.log("#green["+file+"]");
         var result   = UglifyJS.minify(file);
-       // cconsole.log('#blue['+result.code+']'); 
-        rewrite(file,result.code);
-
+        rewrite(file,result.code,function(){
+            cb();
+        });
     }
     catch(err){     
-         cconsole.log("#red["+file+"]");
-
+         cconsole.log("#red[Error in the  File"+file+"]");
+         cb();
     }; 
 };
 
-function rewrite(nameFile, arg){
+function rewrite(nameFile, arg,cb){
   fs.writeFile(nameFile,arg,function(err){
-      if(err){
-        cconsole.log("#red[Error Writing File: " + nameFile + "]");
-        //throw err;
-      }
-      else{
-        cconsole.log("#green[File Written: " + nameFile +"]");
-      };
-  });
-}; 
+    if(err){
+      cconsole.log("#red[Error Writing File: " + nameFile + "]");
+      cb();
+    }
+    else{
+      cconsole.log("#green[File Written: " + nameFile +"]");
+      cb();       
+    };
+  }); 
+};
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   /* fl.forEach(function(item){
-        var pathFolder = path.resolve(path.join(__dirname, folder));
-        var  finalpath = pathFolder+"/"+item;
-        if(fs.statSync(item).isFile()){
-            if(path.extname(item) === ".js"){
-               cconsole.log('- #green["' + finalpath+ '"]'); 
-              // FilesInFolder.push(finalpath);
-
-               amoundFiles = amoundFiles + 1;
-            }; 
-        };   
-    });*/
