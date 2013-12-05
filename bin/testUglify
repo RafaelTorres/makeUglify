@@ -11,7 +11,7 @@ var FilesInFolder = [];
 var folderpath = "";
 
 program
-.version('0.0.43')
+.version('0.0.44')
 .option('-p, --path <pa>','Enter Folder name')
 .parse(process.argv);
 
@@ -68,10 +68,23 @@ function compressingFiles(){
 function minimizer(file,cb){      
     try{
 
-        var result   = UglifyJS.minify(file);
-        rewrite(file,result.code,function(){
+      var result   = UglifyJS.minify(file);
+
+        /*rewrite(file,result.code,function(){
             cb();
-        });
+        });*/
+
+      fs.writeFile(file,result.code,function(err){
+        if(err){
+          cconsole.log("#red[Error Writing File: " + nameFile + "]");
+         
+        }
+        else{
+          cconsole.log("#green[File Written: " + nameFile +"]");      
+        };
+      });
+
+      cb();
     }
     catch(err){     
          cconsole.log("#red[Error in the  File"+file+"]");
