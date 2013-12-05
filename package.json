@@ -1,6 +1,6 @@
 {
   "name": "testuglify",
-  "version": "0.1.54",
+  "version": "0.1.55",
   "author": "Rafael Torres",
   "main": ".bin/",
   "bin": {
