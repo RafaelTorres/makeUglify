@@ -11,7 +11,7 @@ var FilesInFolder = [];
 var folderpath = "";
 
 program
-.version('0.0.44')
+.version('0.0.45')
 .option('-p, --path <pa>','Enter Folder name')
 .parse(process.argv);
 
