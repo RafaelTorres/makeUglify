@@ -82,13 +82,14 @@ function minimizer(file,cb){
         else{
           cconsole.log("#green[File Written: " + file +"]");      
         };
+          cb();
       });
 
-      cb();
+    
     }
     catch(err){     
          cconsole.log("#red[Error in the  File"+file+"]");
-         cb();
+          cb();
     }; 
 };
 
